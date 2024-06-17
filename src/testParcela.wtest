@@ -1,0 +1,31 @@
+import parcelas.*
+import platas.*
+
+describe "parcelas y plantas"{
+	const parcela1= new Parcela(ancho= 20, largo=1, hsDeSol= 8)
+	const soja1= new Soja(anioDeObtencion= 2009, altura= 1.1)
+	const soja2= new Soja(anioDeObtencion= 2009, altura= 1.1)
+	const soja3= new Soja(anioDeObtencion= 2009, altura= 1.1)
+	const soja4= new Soja(anioDeObtencion= 2009, altura= 1.1)
+	//const soja5= new Soja(anioDeObtencion= 2009, altura= 1.1)
+	
+	method initialize(){
+		parcela1.plantarUnaPlanta(soja1)
+		parcela1.plantarUnaPlanta(soja2)
+		parcela1.plantarUnaPlanta(soja3)
+		parcela1.plantarUnaPlanta(soja4)
+		//parcela1.plantarUnaPlanta(soja5)
+	}
+	
+	test "superficie es 20 y max de plantas 4"{
+		assert.equals( 20, parcela1.superficie())
+		assert.equals( 4, parcela1.cantidadMaximaDePlantas())
+	}
+	test "soja1 tolera 9 hs de sol"{
+		assert.equals( 9, soja1.hsDeSolQueTolera())
+	}
+	test "parcela1 no tiene complicaciones"{
+		assert.notThat(parcela1.tieneComplicaciones())
+	}
+	
+} 

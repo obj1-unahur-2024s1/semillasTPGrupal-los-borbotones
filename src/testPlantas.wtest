@@ -1,0 +1,37 @@
+import platas.*
+
+describe "Plantas a testear"{
+	const menta1= new Menta(anioDeObtencion= 1985, altura= 1)
+	const menta2= new Menta(anioDeObtencion= 1985, altura= 0.3)
+	const soja1= new Soja(anioDeObtencion= 2009, altura= 0.6)
+	const quinoa1= new Quinoa(hsDeSolQueTolera= 12, anioDeObtencion= 2010, altura= 1)
+	const quinoa2= new Quinoa(hsDeSolQueTolera= 9, anioDeObtencion= 2001, altura= 1)
+	
+	method initialize(){}
+	
+	test "la menta1 de 1 metro da semillas y ocupa 3 mts" {
+		assert.equals( 3, menta1.espacioQueOcupa())
+		assert.that(menta1.daSemillas())
+	}
+	
+	test "la menta2 de 0.3 metro  no da semillas y ocupa 0.9 mts" {
+		assert.equals( 0.9, menta2.espacioQueOcupa())
+		assert.notThat(menta2.daSemillas())
+	}
+	
+	test "la soja1 tiene tolerancia al sol de 7hs, no da semillas, y ocupa 3 mts"{
+		assert.equals( 7, soja1.hsDeSolQueTolera())
+		assert.equals( 0.3, soja1.espacioQueOcupa())
+		assert.notThat(soja1.daSemillas())
+	}
+	
+	test "la quinoa1 da semillas y es fuerte" {
+		assert.that(quinoa1.daSemillas())
+		assert.that(quinoa1.esFuerte())
+	}
+	
+	test "la quinoa2 da semillas" {
+		assert.that(quinoa2.daSemillas())
+	}
+}
+
